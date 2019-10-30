@@ -27,9 +27,9 @@ class _SearchState extends State<SearchResults> {
 
     super.initState();
     if(type == SearchType.Google)
-    links = Datahelper._loadImagesFromGoogleTask(searchQuery);
+    links = Datahelper.loadImagesFromGoogleTask(searchQuery);
     else
-    Datahelper.LoadImagesFromFlickrTask(searchQuery);
+    links = Datahelper.loadImagesFromFlickrTask(searchQuery);
   }
 
   @override
@@ -84,7 +84,7 @@ class _SearchState extends State<SearchResults> {
                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => DownloadPage(links[index],context))).then((value) {
+                              builder: (BuildContext context) => DownloadPage(links[index],context,type))).then((value) {
                                    
                                     
                               });

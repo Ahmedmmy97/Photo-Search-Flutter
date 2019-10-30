@@ -8,9 +8,12 @@ import 'package:search_app/DataHelper.dart';
 class DownloadPage extends StatefulWidget {
   var url;
   BuildContext context;
-  DownloadPage(this.url,this.context);
+  SearchType type;
+  DownloadPage(this.url,this.context,this.type);
   @override
   State<StatefulWidget> createState() {
+    if(type==SearchType.Flickr)
+      url.replaceFirst("_n", "_b");
     return _DownloadPageState(url,context);
   }
 }
