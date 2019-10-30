@@ -26,7 +26,7 @@ class _SearchState extends State<SearchResults> {
     // TODO: implement initState
 
     super.initState();
-    links = LoadImagesFromGoogleTask.fetchLinks(searchQuery);
+    links = Datahelper.LoadImagesFromGoogleTask(searchQuery);
   }
 
   @override
@@ -81,7 +81,7 @@ class _SearchState extends State<SearchResults> {
                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (BuildContext context) => DownloadPage(links[index]))).then((value) {
+                              builder: (BuildContext context) => DownloadPage(links[index],context))).then((value) {
                                    
                                     
                               });
