@@ -78,7 +78,7 @@ class _DownloadPageState extends State<DownloadPage> {
                 ),
                 onPressed: () {
                   pr.show();
-                  downloaded = Datahelper.DownloadImageFromURL(url);
+                  downloaded = Datahelper.downloadImageFromURL(url);
                    downloaded.then((value) {
                      pr.hide();
                     if (value) _showdialog(context);

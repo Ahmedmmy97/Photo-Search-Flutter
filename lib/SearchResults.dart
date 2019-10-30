@@ -12,8 +12,6 @@ class SearchResults extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
-
     return _SearchState(searchQuery,type);
   }
 }
@@ -25,16 +23,18 @@ class _SearchState extends State<SearchResults> {
   Future<List<String>> links;
   @override
   void initState() {
-    // TODO: implement initState
+    
 
     super.initState();
     if(type == SearchType.Google)
-    links = Datahelper.LoadImagesFromGoogleTask(searchQuery);
+    links = Datahelper._loadImagesFromGoogleTask(searchQuery);
+    else
+    Datahelper.LoadImagesFromFlickrTask(searchQuery);
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    
     return Scaffold(
         body: Column(
       children: <Widget>[
