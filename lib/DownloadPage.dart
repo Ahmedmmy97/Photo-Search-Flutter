@@ -13,7 +13,7 @@ class DownloadPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     if(type==SearchType.Flickr)
-      url.replaceFirst("_n", "_b");
+      url = url.replaceFirst("_n", "_b");
     return _DownloadPageState(url,context);
   }
 }
@@ -24,6 +24,7 @@ class _DownloadPageState extends State<DownloadPage> {
   ProgressDialog pr;
   double _progress=0;
   _DownloadPageState(this.url,context) {
+    print(url);
     SystemChrome.setEnabledSystemUIOverlays([]);
      pr = new ProgressDialog(context,
         type: ProgressDialogType.Download, isDismissible: true, showLogs: true);
