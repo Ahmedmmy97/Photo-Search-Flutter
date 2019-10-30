@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:search_app/DataHelper.dart';
 import 'package:search_app/SearchResults.dart';
 
 class HomePage extends StatefulWidget {
- 
-
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     return _HompageState();
   }
 }
-class _HompageState extends State<HomePage>{
- int _radioGroupValue = 0;
- final textcontroller =  TextEditingController();
+
+class _HompageState extends State<HomePage> {
+  int _radioGroupValue = 0;
+  final textcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,19 +49,22 @@ class _HompageState extends State<HomePage>{
         ),
         buildRadioGroup(context),
         FlatButton(
-                    child: Text("Go!",),
-                    textTheme: Theme.of(context).buttonTheme.textTheme,
-                    color: Theme.of(context).primaryColor,
-                    onPressed: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => SearchResults(textcontroller.text))).then((value) {
-                                   
-                                    
-                              })
-                    },
-                  ),
+          child: Text(
+            "Go!",
+          ),
+          textTheme: Theme.of(context).buttonTheme.textTheme,
+          color: Theme.of(context).primaryColor,
+          onPressed: () => {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => SearchResults(
+                        textcontroller.text,
+                        _radioGroupValue == 0
+                            ? SearchType.Google
+                            : SearchType.Flickr))).then((value) {})
+          },
+        ),
       ],
     );
   }
@@ -82,7 +85,7 @@ class _HompageState extends State<HomePage>{
         new Radio(
           value: 1,
           groupValue: _radioGroupValue,
-           onChanged: _handleRadioValueChange1,
+          onChanged: _handleRadioValueChange1,
         ),
         new Text(
           'Flickr',
@@ -96,7 +99,7 @@ class _HompageState extends State<HomePage>{
 
   void _handleRadioValueChange1(int value) {
     setState(() {
-    _radioGroupValue = value;
+      _radioGroupValue = value;
     });
   }
 }

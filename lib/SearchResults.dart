@@ -4,28 +4,31 @@ import 'package:flutter/widgets.dart';
 import 'package:search_app/DataHelper.dart';
 import 'package:search_app/DownloadPage.dart';
 
+
 class SearchResults extends StatefulWidget {
   String searchQuery;
-
-  SearchResults(this.searchQuery);
+  SearchType type;
+  SearchResults(this.searchQuery,this.type);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
 
-    return _SearchState(searchQuery);
+    return _SearchState(searchQuery,type);
   }
 }
 
 class _SearchState extends State<SearchResults> {
   String searchQuery;
-  _SearchState(this.searchQuery);
+  SearchType type;
+  _SearchState(this.searchQuery,this.type);
   Future<List<String>> links;
   @override
   void initState() {
     // TODO: implement initState
 
     super.initState();
+    if(type == SearchType.Google)
     links = Datahelper.LoadImagesFromGoogleTask(searchQuery);
   }
 

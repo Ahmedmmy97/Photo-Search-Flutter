@@ -5,9 +5,9 @@ import 'package:http/http.dart' as http;
 
 import 'package:html/parser.dart' show parse;
 import 'package:image_downloader/image_downloader.dart';
-
+ enum SearchType { Google, Flickr }
 class  Datahelper{
-
+ 
  static Future<List<String>> LoadImagesFromGoogleTask(String query) async {
   var url = Uri.encodeFull("https://www.google.com/search?q=" + query + "&tbm=isch&tbs=isz:m");
 
