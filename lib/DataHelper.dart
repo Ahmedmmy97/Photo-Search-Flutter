@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:html/parser.dart' show parse;
 import 'package:image_downloader/image_downloader.dart';
+import 'package:image_picker_saver/image_picker_saver.dart';
 import 'package:search_app/FlickrModel.dart';
 
 enum SearchType { Google, Flickr }
@@ -43,16 +45,24 @@ class Datahelper {
   static Future<bool> downloadImageFromURL(String url) async {
     try {
       // Saved with this method.
-      var imageId = await ImageDownloader.downloadImage(url);
-      if (imageId == null) {
+       var response = await http.get(url, headers: {
+        'user-agent':
+            'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36'
+      });
+      print(response.statusCode.toString());
+      var filePath = await ImagePickerSaver.saveFile(
+          fileData: response.bodyBytes);
+      print(filePath);
+      
+     
+      if (response.statusCode == 200) {
+        return true;
+      }else{
         return false;
       }
 
       // Below is a method of obtaining saved image information.
-      var fileName = await ImageDownloader.findName(imageId);
-      var path = await ImageDownloader.findPath(imageId);
-      var size = await ImageDownloader.findByteSize(imageId);
-      var mimeType = await ImageDownloader.findMimeType(imageId);
+     
     } on PlatformException catch (error) {
       print(error);
     }

@@ -46,16 +46,7 @@ class _DownloadPageState extends State<DownloadPage> {
   void initState() {
     super.initState();
     
-    ImageDownloader.callback(onProgressUpdate: (String imageId, int progress) {
-      setState(() {
-        _progress = progress*1.0;
-        print("Progress: " + progress.toString());
-        pr.update(
-          progress:_progress,
-        );
-      });
-     
-    });
+   
   }
   
   
@@ -84,6 +75,7 @@ class _DownloadPageState extends State<DownloadPage> {
                   pr.show();
                   downloaded = Datahelper.downloadImageFromURL(url);
                    downloaded.then((value) {
+                     pr.update(progress: 100);
                      pr.hide();
                     if (value) _showdialog(context);
                   });
