@@ -66,10 +66,11 @@ class _DownloadPageState extends State<DownloadPage> {
               width: double.infinity,
               height: 50,
               child: FlatButton(
-                color: Theme.of(context).primaryColorLight,
+                color: Theme.of(context).primaryColor,
                 child: Text(
                   "Download",
-                  style: Theme.of(context).textTheme.button,
+                  style: Theme.of(context).textTheme.headline.apply(color: Colors.white),
+                  
                 ),
                 onPressed: () {
                   pr.show();

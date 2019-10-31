@@ -32,19 +32,22 @@ class _HompageState extends State<HomePage> {
           child: Image.asset("assets/logo.png"),
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(30, 10, 30, 0),
+          color: Color(0xFFECE8E5),
+          margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
           child: TextField(
+            
             controller: textcontroller,
             textAlign: TextAlign.center,
             maxLines: 1,
+            cursorColor: Theme.of(context).primaryColorDark,
             style: Theme.of(context).primaryTextTheme.subhead,
             decoration: InputDecoration(
-                fillColor: Color(0xF0ECE8E5),
-                contentPadding: const EdgeInsets.symmetric(vertical: 5.0),
+                fillColor: Color(0xFFECE8E5),
+                contentPadding: const EdgeInsets.symmetric(vertical: 7.0),
                 border: OutlineInputBorder(
                     borderSide:
                         BorderSide(width: 1.0, color: const Color(0xE4B9B5B5))),
-                hintText: 'Photo Search'),
+                hintText: 'Search Images'),
           ),
         ),
         buildRadioGroup(context),
@@ -53,7 +56,7 @@ class _HompageState extends State<HomePage> {
             "Go!",
           ),
           textTheme: Theme.of(context).buttonTheme.textTheme,
-          color: Theme.of(context).primaryColor,
+          color: Color(0xFFECE8E5),
           onPressed: () => {
             Navigator.push(
                 context,
