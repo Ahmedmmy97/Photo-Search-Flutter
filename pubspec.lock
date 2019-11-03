@@ -116,13 +116,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.7"
-  image_downloader:
-    dependency: "direct main"
-    description:
-      name: image_downloader
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.19.1"
   image_picker_saver:
     dependency: "direct main"
     description:

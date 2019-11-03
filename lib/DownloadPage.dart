@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:image_downloader/image_downloader.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:search_app/DataHelper.dart';
 

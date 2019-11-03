@@ -1,11 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:html/parser.dart' show parse;
-import 'package:image_downloader/image_downloader.dart';
 import 'package:image_picker_saver/image_picker_saver.dart';
 import 'package:search_app/FlickrModel.dart';
 
